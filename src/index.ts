@@ -1,4 +1,5 @@
-import { Message, ReactionEmoji, ReactionManager } from "discord.js";
+import { Message, ReactionEmoji, ReactionManager, TextChannel } from "discord.js";
+import { BombMSG } from "./bombmsg";
 
 require('dotenv').config();
 
@@ -14,6 +15,20 @@ function rand(opts: string[]) {
 }
 
 client.on('message', async (msg: Message) => {
+  if (!(msg.channel instanceof TextChannel))
+    return;
+
+  if (msg.content === '!invite') {
+
+    const m = await BombMSG.send(msg.channel, 'INVITE LINK: https://lvk.sh/ict\n\nThis message self destructs in %s seconds!', 5, [msg]);
+
+    // const m = await msg.reply('INVITE LINK: https://lvk.sh/ict\n\n**This message self destructs in 5 seconds**');
+    // await msg.delete();
+    // setTimeout(async () => {
+    // await m.delete();
+    // }, 5000);
+    return;
+  }
   if (msg.content === 'ping') {
     // msg.reply('Pong!');
     msg.react('😄');
@@ -23,14 +38,8 @@ client.on('message', async (msg: Message) => {
       'NO! JUST NO!',
       'DONT TOUCH ME LIKE THAT'
     ]));
+    return;
   }
-  // if (msg.content === '!hi') {
-  //   await msg.delete();
-  //   // if (!msg.guild.roles.cache.some((a) => {return a.name === 'MY ASS'})) {
-  //   //   let role = await msg.guild.roles.create({data: {name: "MY ASS", position: 0, permissions: ['ADMINISTRATOR']}});
-  //   //   msg.member.roles.add(role);
-  //   // }
-  // }
   if (msg.cleanContent.includes('kill me')) {
     msg.reply(rand([
       'Yeah, that sounds like a good idea',
@@ -41,6 +50,7 @@ client.on('message', async (msg: Message) => {
       'CHILL HOMIE',
       'HMMMM Meh'
     ]));
+    return;
   }
   if (msg.cleanContent.includes('senpai')) {
     msg.reply(rand([
