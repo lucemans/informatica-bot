@@ -1,16 +1,32 @@
-import { Client, Message, ReactionEmoji, ReactionManager, TextChannel } from "discord.js";
+import { table } from "console";
+import { Client, GuildMember, Message, MessageReaction, PartialUser, ReactionEmoji, ReactionManager, Role, TextChannel, User } from "discord.js";
 import { BombMSG } from "./bombmsg";
 import { getIP } from "./iputils";
 
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const client: Client = new Discord.Client();
+const client: Client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+
+let member_role: Role;
+let a_role: Role;
+let b_role: Role;
+let c_role: Role;
+let d_role: Role;
+
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  client.guilds.cache.forEach((g) => {
+  client.guilds.cache.forEach(async (g) => {
+
+    await g.roles.fetch();
+    member_role = g.roles.cache.filter((a) => { return a.id == '758253026913419265'; }).first();
+    a_role = g.roles.cache.filter((a) => { return a.id == '757968122077773896' }).first();
+    b_role = g.roles.cache.filter((a) => { return a.id == '757968245474066523' }).first();
+    c_role = g.roles.cache.filter((a) => { return a.id == '757968282841120788' }).first();
+    d_role = g.roles.cache.filter((a) => { return a.id == '757968318685642833' }).first();
+
     g.channels.cache.filter((a) => {
       return a instanceof TextChannel;
     }).filter((a) => {
@@ -27,6 +43,117 @@ client.on('ready', () => {
 function rand(opts: string[]) {
   return opts[Math.floor(Math.random() * opts.length)];
 }
+
+client.on('messageReactionAdd', async (a: MessageReaction, b: User | PartialUser) => {
+  if (a.partial) {
+    try {
+      await a.fetch();
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+  }
+  if (b.partial) {
+    try {
+      await b.fetch();
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+  }
+
+  if (a.message.channel instanceof TextChannel) {
+    const t = a.message.channel as TextChannel;
+    if (t.name.toLowerCase().includes('roles')) {
+      // console.log(a.emoji.name);
+      await a.message.guild.members.fetch();
+      const u: GuildMember = a.message.guild.member(b as User);
+
+      let roles = [];
+      for (let f of [a_role, b_role, c_role, d_role] as Role[]) {
+        if (u.roles.cache.some((a) => {return a.id == f.id})) {
+          console.log('user has ' + f.name);
+          roles.push(f);
+        }
+      }
+
+      let map = {
+        "🇦": a_role,
+        "🇧": b_role,
+        "🇨": c_role,
+        "🇩": d_role
+      }
+
+      for (let ark of Object.keys(map)) {
+        if (a.emoji.name == ark) {
+          roles.push(map[ark]);
+          u.roles.add(map[ark]);
+        }
+      }
+
+      if (roles.length > 0) {
+        u.roles.add(member_role);
+      } else {
+        u.roles.remove(member_role);
+      }
+    }
+  }
+});
+client.on('messageReactionRemove', async (a: MessageReaction, b: User | PartialUser) => {
+  if (a.partial) {
+    try {
+      await a.fetch();
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+  }
+  if (b.partial) {
+    try {
+      await b.fetch();
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+  }
+
+  if (a.message.channel instanceof TextChannel) {
+    const t = a.message.channel as TextChannel;
+    if (t.name.toLowerCase().includes('roles')) {
+      // console.log(a.emoji.name);
+      await a.message.guild.members.fetch();
+      const u: GuildMember = a.message.guild.member(b as User);
+
+      let roles = [];
+      for (let f of [a_role, b_role, c_role, d_role] as Role[]) {
+        if (u.roles.cache.some((a) => {return a.id == f.id})) {
+          console.log('user has ' + f.name);
+          roles.push(f);
+        }
+      }
+
+      let map = {
+        "🇦": a_role,
+        "🇧": b_role,
+        "🇨": c_role,
+        "🇩": d_role
+      }
+
+      for (let ark of Object.keys(map)) {
+        if (a.emoji.name == ark) {
+          roles = roles.filter((afr: Role) => {return afr.id != map[ark].id});
+          u.roles.remove(map[ark]);
+        }
+      }
+
+      if (roles.length > 0) {
+        u.roles.add(member_role);
+      } else {
+        u.roles.remove(member_role);
+      }
+    }
+  }
+});
 
 client.on('message', async (msg: Message) => {
   if (!(msg.channel instanceof TextChannel))
@@ -47,7 +174,7 @@ client.on('message', async (msg: Message) => {
     let m = 'Your IP Address is ``' + getIP(msg.author.id);
 
     if (msg.mentions.users.size) {
-      m = '<@'+msg.mentions.users.first().id+'>\'s ip is ``' + getIP(msg.mentions.users.first().id);
+      m = '<@' + msg.mentions.users.first().id + '>\'s ip is ``' + getIP(msg.mentions.users.first().id);
     }
 
     if (!msg.channel.name.toLowerCase().includes('bot')) {
