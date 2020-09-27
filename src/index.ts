@@ -170,6 +170,11 @@ client.on('message', async (msg: Message) => {
     // const m = await BombMSG.send(msg.channel, 'INVITE LINK: https://lvk.sh/ict\n\nThis message self destructs in %s seconds!', 5, [msg]);
     return;
   }
+  if (msg.content === '!links') {
+    //BombMSG.send({ channel: msg.channel, msg: 'Facebook WINAK group: https://www.facebook.com/groups/787046402121728\nWINAK website: https://www.winak.be/\nDiscord invite link: https://lvk.sh/ict\nBlackboard: https://blackboard.uantwerpen.be/\nFree hacking tools: https://zws.im/‍‌‌‌‌‌‌‍‍‍ \n', timeUntilDeletion: 5, alsoDelete: [msg], timeUntilUpdate: 1 })
+    msg.channel.send('Facebook WINAK group: https://www.facebook.com/groups/787046402121728\nWINAK website: https://www.winak.be/\nDiscord invite link: https://lvk.sh/ict\nBlackboard: https://blackboard.uantwerpen.be/\nFree hacking tools: https://zws.im/‍‌‌‌‌‌‌‍‍‍ \n');
+    return;
+  }
   if (msg.content.startsWith('!ip')) {
     let m = 'Your IP Address is ``' + getIP(msg.author.id);
 
