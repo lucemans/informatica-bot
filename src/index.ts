@@ -165,6 +165,10 @@ client.on('message', async (msg: Message) => {
     BombMSG.send({ channel: msg.channel, msg: 'List of Commands ```javascript\n!invite // Laat de invite link zien\n!ping // Ping!\n!ip // Laat uw IP-Address zien```Self Destructs in %s', alsoDelete: [msg], timeUntilDeletion: 20, timeUntilUpdate: 5 });
     return;
   }
+  if (msg.content === '!aot') {
+    BombMSG.send({ channel: msg.channel, msg: 'Shinzou wo Sasageyo```Self Destructs in %s', alsoDelete: [msg], timeUntilDeletion: 20, timeUntilUpdate: 5 });
+    return;
+  }
   if (msg.content === '!invite') {
     BombMSG.send({ channel: msg.channel, msg: 'INVITE LINK: https://lvk.sh/ict\n\nThis message self destructs in %s seconds!', timeUntilDeletion: 5, alsoDelete: [msg], timeUntilUpdate: 1 })
     // const m = await BombMSG.send(msg.channel, 'INVITE LINK: https://lvk.sh/ict\n\nThis message self destructs in %s seconds!', 5, [msg]);
