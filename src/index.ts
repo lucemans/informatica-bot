@@ -171,7 +171,7 @@ client.on('message', async (msg: Message) => {
     return;
   }
   if (msg.content === '!links') {
-    BombMSG.send({ channel: msg.channel, msg: '\nFacebook WINAK group: <https://www.facebook.com/groups/787046402121728\>\nWINAK website: <https://www.winak.be/>\nWINAK Discord: <https://discord.gg/84rV8Ze>\nDiscord invite link: <https://lvk.sh/ict>\nBlackboard: <https://blackboard.uantwerpen.be/>\nCSA: <http://msdl.cs.mcgill.ca/people/hv/teaching/ComputerSystemsArchitecture/>\nGAS: <https://app.perusall.com/courses/gegevensabstractie-en-structuren/_/dashboard/startup>\nIP (Inginious): <https://inginious.uantwerpen.be/course/IP2021>', timeUntilDeletion: 60, alsoDelete: [msg], timeUntilUpdate: 1 })
+    BombMSG.send({ channel: msg.channel, msg: '\nFacebook WINAK group: <https://www.facebook.com/groups/787046402121728\>\nWINAK website: <https://www.winak.be/>\nDiscord invite link: <https://lvk.sh/ict>\nBlackboard: <https://blackboard.uantwerpen.be/>\nCSA: <http://msdl.cs.mcgill.ca/people/hv/teaching/ComputerSystemsArchitecture/>\nGAS: <https://app.perusall.com/courses/gegevensabstractie-en-structuren/_/dashboard/startup>\nIP (Inginious): <https://inginious.uantwerpen.be/course/IP2021>', timeUntilDeletion: 60, alsoDelete: [msg], timeUntilUpdate: 1 })
     // msg.channel.send('\nFacebook WINAK group: <https://www.facebook.com/groups/787046402121728\>\nWINAK website: <https://www.winak.be/>\nDiscord invite link: <https://lvk.sh/ict>\nBlackboard: <https://blackboard.uantwerpen.be/>\nFree hacking tools: <https://zws.im/‍‌‌‌‌‌‌‍‍‍> \n');
     return;
   }
