@@ -1,5 +1,5 @@
 import { table } from "console";
-import { Client, GuildMember, Message, MessageReaction, PartialUser, ReactionEmoji, ReactionManager, Role, TextChannel, User } from "discord.js";
+import { Activity, ActivityOptions, Client, GuildMember, Message, MessageReaction, PartialUser, PresenceManager, ReactionEmoji, ReactionManager, Role, TextChannel, User } from "discord.js";
 import { BombMSG } from "./bombmsg";
 import { getIP } from "./iputils";
 
@@ -15,8 +15,12 @@ let c_role: Role;
 let d_role: Role;
 
 
-client.on('ready', () => {
+client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
+
+  const f: ActivityOptions = {type: "PLAYING", name: "lvk.sh/ictbot"};
+  const r = await client.user.setActivity(f);
+  console.log('Activity Set');
 
   client.guilds.cache.forEach(async (g) => {
 
