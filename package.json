@@ -11,7 +11,8 @@
     "@types/seedrandom": "^2.4.28",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
-    "seedrandom": "^3.0.5"
+    "seedrandom": "^3.0.5",
+    "styled-components": "^3.1.6"
   },
   "scripts": {
     "start": "ts-node ./src/index.ts"
