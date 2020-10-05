@@ -19,7 +19,8 @@ let voice_role: Role;
 client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  const f: ActivityOptions = { type: "PLAYING", name: "lvk.sh/ictbot" };
+
+  const f: ActivityOptions = {type: "PLAYING", name: "lvk.sh/ictbot"};
   const r = await client.user.setActivity(f);
   console.log('Activity Set');
 
