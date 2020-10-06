@@ -279,6 +279,28 @@ client.on('message', async (msg: Message) => {
     })
     return;
   }
+  if (msg.cleanContent.includes('tell a racist joke')) {
+
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id = '> ' = rand([
+          'Hoe noem je 2 joden in een roeiboot?' +
+          'NOG NIET UITGEROEID!',
+          'Ik heb een mop' +
+          'EEN NEGER MET EEN JOB!',
+          'Hoeveel zwarte heb je nodig voor een opstand?' +
+          '-1',
+          'Wat zijn de 5 witte dingen aan een neger?' +
+          '1) Hun ogen, onderkant van de voeten, onderkant van de handen, hun tanden, HUN BAAS',
+          'Wat doe je als je je TV ziet zweven?' +
+          'HET LICHT AANDOEN EN DE NEGER NEERSCHIETEN',
+          'Wat scheidt mensen van apen?' +
+          'DE MIDDELANDSE ZEE',
+          'Hoe noem je een hond zonder poten?' +
+          'Geen idee maar als je hem roept komt hem toch niet!',
+      ]), timeUntilDeletion: 15, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
 
   if (msg.channel.name.toLowerCase().includes('bot')) {
     msg.delete();
