@@ -282,7 +282,7 @@ client.on('message', async (msg: Message) => {
   if (msg.cleanContent.includes('tell a racist joke')) {
 
     BombMSG.send({
-      channel: msg.channel, msg: '<@' + msg.author.id = '> ' = rand([
+      channel: msg.channel, msg: '<@' + msg.author.id + '> ' + rand([
           'Hoe noem je 2 joden in een roeiboot?' +
           'NOG NIET UITGEROEID!',
           'Ik heb een mop' +
