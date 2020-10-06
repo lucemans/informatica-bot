@@ -174,6 +174,7 @@ const userSounds = {
   '389006437613043712': 'sans.mp3', // luc
   '758631774154391572': 'yup.mp3', // mr.stupid
   '322045906449072129': 'ahri.mp3', // daan
+  '564872677018566687': 'nofuture.mp3', // Zaga
 }
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
