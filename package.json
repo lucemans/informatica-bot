@@ -6,6 +6,7 @@
   "author": "Lucemans <luc@lucemans.nl>",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^14.11.2",
     "@types/seedrandom": "^2.4.28",

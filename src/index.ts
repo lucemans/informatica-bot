@@ -1,7 +1,9 @@
 import { table } from "console";
-import { Activity, ActivityOptions, Client, GuildMember, Message, MessageReaction, PartialUser, PresenceManager, ReactionEmoji, ReactionManager, Role, TextChannel, User } from "discord.js";
+import { Activity, ActivityOptions, Client, GuildMember, Message, MessageReaction, PartialUser, PresenceManager, ReactionEmoji, ReactionManager, Role, TextChannel, User, VoiceState } from "discord.js";
 import { BombMSG } from "./bombmsg";
 import { getIP } from "./iputils";
+import * as fs from 'fs';
+import * as path from 'path';
 
 require('dotenv').config();
 
@@ -13,12 +15,13 @@ let a_role: Role;
 let b_role: Role;
 let c_role: Role;
 let d_role: Role;
+let voice_role: Role;
 
 
 client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  const f: ActivityOptions = {type: "PLAYING", name: "lvk.sh/ictbot"};
+  const f: ActivityOptions = { type: "PLAYING", name: "lvk.sh/ictbot" };
   const r = await client.user.setActivity(f);
   console.log('Activity Set');
 
@@ -30,6 +33,12 @@ client.on('ready', async () => {
     b_role = g.roles.cache.filter((a) => { return a.id == '757968245474066523' }).first();
     c_role = g.roles.cache.filter((a) => { return a.id == '757968282841120788' }).first();
     d_role = g.roles.cache.filter((a) => { return a.id == '757968318685642833' }).first();
+    voice_role = g.roles.cache.filter((a) => { return a.id == '762799243521294358' }).first();
+
+    // g.roles.cache.forEach((r) => {
+    //   // TODO: DEBUG REMOVE
+    //   console.log(r.id + " " + r.name);
+    // });
 
     g.channels.cache.filter((a) => {
       return a instanceof TextChannel;
@@ -75,7 +84,7 @@ client.on('messageReactionAdd', async (a: MessageReaction, b: User | PartialUser
 
       let roles = [];
       for (let f of [a_role, b_role, c_role, d_role] as Role[]) {
-        if (u.roles.cache.some((a) => {return a.id == f.id})) {
+        if (u.roles.cache.some((a) => { return a.id == f.id })) {
           console.log('user has ' + f.name);
           roles.push(f);
         }
@@ -130,7 +139,7 @@ client.on('messageReactionRemove', async (a: MessageReaction, b: User | PartialU
 
       let roles = [];
       for (let f of [a_role, b_role, c_role, d_role] as Role[]) {
-        if (u.roles.cache.some((a) => {return a.id == f.id})) {
+        if (u.roles.cache.some((a) => { return a.id == f.id })) {
           console.log('user has ' + f.name);
           roles.push(f);
         }
@@ -145,7 +154,7 @@ client.on('messageReactionRemove', async (a: MessageReaction, b: User | PartialU
 
       for (let ark of Object.keys(map)) {
         if (a.emoji.name == ark) {
-          roles = roles.filter((afr: Role) => {return afr.id != map[ark].id});
+          roles = roles.filter((afr: Role) => { return afr.id != map[ark].id });
           u.roles.remove(map[ark]);
         }
       }
@@ -156,6 +165,41 @@ client.on('messageReactionRemove', async (a: MessageReaction, b: User | PartialU
         u.roles.remove(member_role);
       }
     }
+  }
+});
+
+const userSounds = {
+  '597812443057750016': 'yup.mp3', // yous
+  '434749785518505984': 'house.mp3', // robbe
+  '389006437613043712': 'sans.mp3', // luc
+  '758631774154391572': 'yup.mp3', // mr.stupid
+  '322045906449072129': 'ahri.mp3', // daan
+}
+
+client.on('voiceStateUpdate', async (oldState, newState) => {
+  if (newState.member.user.bot)
+      return;
+    
+
+  if (oldState.channel == null && newState.channel != null) {
+    newState.member.roles.add([voice_role]);
+    console.log(newState.member.displayName + " " + newState.member.user.id);
+
+    // const f = newState.connection.receiver.createStream(newState.member.user, {mode: "opus"});
+
+
+    // insert code hier
+    if (userSounds[newState.member.user.id] != null) {
+      // RICK ROLL
+      const a = await newState.channel.join();
+      const str = a.play(fs.createReadStream(path.join(__dirname, '../assets/' + userSounds[newState.member.user.id])))
+      str.on('finish', async () => {
+        await a.disconnect();
+      });
+    }
+  }
+  if (oldState.channel != null && newState.channel == null) {
+    newState.member.roles.remove(voice_role);
   }
 });
 
