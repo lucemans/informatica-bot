@@ -20,6 +20,6 @@
   },
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "test": "jest --passWithNoTests"
+    "test": "tsc ./src/index.ts"
   }
 }
