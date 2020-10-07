@@ -282,7 +282,7 @@ client.on('message', async (msg: Message) => {
   if (msg.cleanContent.includes('tell a racist joke')) {
 
     BombMSG.send({
-      channel: msg.channel, msg: '<@' + msg.author.id = '> ' = rand([
+      channel: msg.channel, msg: '<@' + msg.author.id + '> ' + rand([
           'Hoe noem je 2 joden in een roeiboot?' +
           'NOG NIET UITGEROEID!',
           'Ik heb een mop' +
@@ -301,7 +301,77 @@ client.on('message', async (msg: Message) => {
     })
     return;
   }
-
+  if (msg.cleanContent.includes('code')) {
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
+          'Jij hebt de code geactiveerd... KLAAR VOOR EEN UITDAGING?' +
+          'Vindt de juiste code. 2 nummers achter elkaar. ' +
+          'Zoals 00. ' +
+          'Als je de juiste code hebt gevonden ben je klaar voor de volgende test'
+      ]), timeUntilDeletion: 25, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
+  if (msg.cleanContent.includes('69')) {
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
+        'Gefeliciteerd, je hebt het eerste level gehaald. Niet al te moeilijk. Voor de volgende test' +
+        ' moet je een raadsel oplossen. Het raadsel: Welk instrument kan je NIET zien of aanraken maar WEL horen???' +
+        'Antwoord met bijvoorbeeld: piano (NIET "EEN" PIANO)'
+      ]), timeUntilDeletion: 25, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
+  if (msg.cleanContent.includes('je stem','je zang','zang','stem')) {
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
+        'Wauw, je doet het goed. Maar je bent er nog steeds niet vanaf. De opdrachten worden alleen maar ' +
+        'moeilijker en moeilijker. Volgende vraag. ' +
+        ' 1,  1,  2,  3,  5,  ?,  ' +
+        'Welk getal moet er op het vraagteken staan?'
+      ]), timeUntilDeletion: 25, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
+  if (msg.cleanContent.includes('8')) {
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
+        'De rij van Fibonacci, een klassieker. Maar goed gedaan testobject! ' +
+        'Dit zal het verste zijn dat je kan halen, de volgende heeft nog geeneen levend persoon gehaald.' +
+        ' Volgende vraag:  ' +
+        'Welk dier heeft in het begin van de dag 4 poten, in het midden van de dag 2 poten en op het einde van de dag 3 poten?' +
+        'Antwoord met bijvoorbeeld: leeuw (NIET EEN LEEUW of DE LEEUW)'
+      ]), timeUntilDeletion: 30, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
+  if (msg.cleanContent.includes('mens')) {
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
+        'Dit kan niet, niemand is oo_it zo ver Ggg__eraakt!' +
+        'Ik heb nog een vraag voor jouw. ..___ _ ' +
+        'LAAtttsTTste__ vraag:' +
+        '   Als Opa een zoon heeft, waarvan die zoon een Opa heeft die ook een zoon heeft die een zoon heeft. En die zoon heeft ook een zoon.' +
+        'Wat is die zoon dan voor de eerste Opa? ( wat is de relatie tussen de eerste Opa en de laatste zoon?)'
+      ]), timeUntilDeletion: 30, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
+  if (msg.cleanContent.includes('kleinzoon','Kleinzoon')) {
+    BombMSG.send({
+      channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
+        'DDdd__- it iiisSS ONnmogeliijiijk!!!!! !' +
+        'WWWJHAAttttt GEbb____rreueurt EEeeeeeer.????' +
+        'DhjSZKFNVIDJKED____//.?///..?*%¨%£%¨M' +
+        '+µù$:ù=-)m)çmp)m==!µç' +
+        '__________________________' +
+        '__________________________' +
+        'https://www.facebook.com/groups/331071840978116' +
+        ' JOIN THE TRUTH'
+      ]), timeUntilDeletion: 30, alsoDelete: [msg], timeUntilUpdate: 1
+    })
+    return;
+  }
   if (msg.channel.name.toLowerCase().includes('bot')) {
     msg.delete();
     BombMSG.send({ channel: msg.channel, msg: '``' + msg.cleanContent + '`` was not recognized as a command, try ``!help`` for a list of commands.', timeUntilDeletion: 5, alsoDelete: [msg], timeUntilUpdate: 1 })
