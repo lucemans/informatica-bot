@@ -10,9 +10,11 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const client: Client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
+let member_role: Role;​
+13
 12
+14
 Error: src/index.ts(9,1): error TS2552: Cannot find name 'reqeeuire'. Did
-let member_role: Role;
 let a_role: Role;
 let b_role: Role;
 let c_role: Role;
