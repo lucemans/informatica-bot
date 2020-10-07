@@ -322,7 +322,7 @@ client.on('message', async (msg: Message) => {
       })
       return;
     }
-    if (msg.cleanContent.includes('je stem','je zang','zang','stem')) {
+    if (msg.cleanContent.includes('zang') || msg.cleanContent.includes('stem')) {
       BombMSG.send({
         channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
           'Wauw, je doet het goed. Maar je bent er nog steeds niet vanaf. De opdrachten worden alleen maar ' +
@@ -357,7 +357,7 @@ client.on('message', async (msg: Message) => {
       })
       return;
     }
-    if (msg.cleanContent.includes('kleinzoon','Kleinzoon')) {
+    if (msg.cleanContent.toLowerCase().includes('kleinzoon')) {
       BombMSG.send({
         channel: msg.channel, msg: '<@' + msg.author.id + '>' + rand([
           'DDdd__- it iiisSS ONnmogeliijiijk!!!!! !' +
