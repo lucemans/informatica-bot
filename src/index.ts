@@ -211,7 +211,7 @@ client.on('message', async (msg: Message) => {
     return;
 
   if (msg.content === '!help') {
-    BombMSG.send({ channel: msg.channel, msg: 'List of Commands ```javascript\n!invite // Laat de invite link zien\n!ping // Ping!\n!ip // Laat uw IP-Address zien```Self Destructs in %s', alsoDelete: [msg], timeUntilDeletion: 20, timeUntilUpdate: 5 });
+    BombMSG.send({ channel: msg.channel, msg: 'List of Commands ```javascript\n!invite // Laat de invite link zien\n!ping // Ping!\n!ip // Laat uw IP-Address zien\nkill me // kill me\ntell a racist joke // voor een racistisch mopje\ncode // voor een raadseltocht\nsenpai // senpai```Self Destructs in %s', alsoDelete: [msg], timeUntilDeletion: 20, timeUntilUpdate: 5 });
     return;
   }
   if (msg.content === '!aot') {
