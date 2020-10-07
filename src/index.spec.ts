@@ -1,1 +1,1 @@
-import index from './index.ts'
+import index from './index'
