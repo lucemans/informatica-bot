@@ -4,6 +4,7 @@ import { BombMSG } from "./bombmsg";
 import { getIP } from "./iputils";
 import * as fs from 'fs';
 import * as path from 'path';
+-
 
 require('dotenv').config();
 
