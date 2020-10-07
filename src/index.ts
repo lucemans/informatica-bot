@@ -7,8 +7,6 @@ import * as path from 'path';
 
 require('dotenv').config();
 
-Here is an error in the code! :)
-
 const Discord = require('discord.js');
 const client: Client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
