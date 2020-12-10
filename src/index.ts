@@ -211,7 +211,7 @@ client.on('message', async (msg: Message) => {
   if (msg.author.bot)
     return;
 
-  if (msg.cleanContent.includes('discord.gg')) {
+  if (msg.cleanContent.includes('discord.gg') || msg.cleanContent.includes('Un1Format1ca')) {
     console.log('deleted link from ' + msg.author.username);
     msg.delete();
     return;
