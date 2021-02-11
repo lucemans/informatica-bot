@@ -172,7 +172,6 @@ const userSounds = {
   '597812443057750016': 'yup.mp3', // yous
   '434749785518505984': 'house.mp3', // robbe
   '389006437613043712': 'sans.mp3', // luc
-  '758631774154391572': 'stupid.mp3', // mr.stupid
   '322045906449072129': 'ahri.mp3', // daan
   '564872677018566687': 'nofuture.mp3', // Zaga
   '257231546874855424': 'sasageyo.mp3', //Phil
