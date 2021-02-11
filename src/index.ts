@@ -31,7 +31,7 @@ client.on('ready', async () => {
     member_role = g.roles.cache.filter((a) => { return a.id == '758253026913419265'; }).first();
     a_role = g.roles.cache.filter((a) => { return a.id == '757968122077773896' }).first();
     b_role = g.roles.cache.filter((a) => { return a.id == '757968245474066523' }).first();
-    c_role = g.roles.cache.filter((a) => { return a.id == '757968282841120788' }).first();
+    c_role = g.roles.cache.filter((a) => { return a.id == '757957853880385734' }).first();
     d_role = g.roles.cache.filter((a) => { return a.id == '757968318685642833' }).first();
     voice_role = g.roles.cache.filter((a) => { return a.id == '762799243521294358' }).first();
 
