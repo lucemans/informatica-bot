@@ -11,6 +11,7 @@ const Discord = require('discord.js');
 const client: Client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
 let member_role: Role;
+
 let a_role: Role;
 let b_role: Role;
 let c_role: Role;
